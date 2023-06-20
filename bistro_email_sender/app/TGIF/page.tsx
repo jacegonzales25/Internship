@@ -10,8 +10,16 @@ export default function TGIF() {
         resume: ""
     });
 
+
+
     function submitForm(event: any) {
         
+    }
+
+    function handleChange(event: any){
+        setForm({
+            ...form,
+            [event.target.name]: event})
     }
     
 
