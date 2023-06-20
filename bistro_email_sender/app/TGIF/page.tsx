@@ -13,6 +13,7 @@ export default function TGIF() {
     function submitForm(event: any) {
         formData.append('name', form.name);
         formData.append('email', form.email);
+        formData.append('file', file);
     }
 
     function handleChange(event: any){
@@ -25,13 +26,13 @@ export default function TGIF() {
         })
     }
     
-    const [file, setFile] = useState(undefined);
+    const [file, setFile] = useState("");
 
     function handleFileChange(event: any){
       // Handling 1 resume passed
       const file = event.target.files[0];
       setFile(file);
-      formData.append('file', file);
+
     }
 
     axios.post("apply@bistro.com.ph", formData, {
@@ -60,7 +61,7 @@ export default function TGIF() {
             <input type="email" name="email" onChange={handleChange} value={form.email} placeholder="Email"></input>
             
             <label>Resume:</label>
-            <input type="file" name="resume" onChange={handleFileChange} value={file} accept=".pdf,.doc,.docx" placeholder="Resume"></input>
+            <input type="file" name="resume" onChange={handleFileChange} accept=".pdf,.doc,.docx" placeholder="Resume"></input>
             <button onClick={submitForm}>Send</button>
         </form>
         <h1>Form Test</h1>
